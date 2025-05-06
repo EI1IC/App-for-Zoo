@@ -1,0 +1,73 @@
+﻿@page
+@model Areas.Identity.Pages.Account.LoginModel
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject EmployeeService EmployeeService
+
+@{
+    ViewData["Title"] = "Главная";
+}
+
+<body class="body-background">
+    <div class="wrapper">
+        <div class="border-container-login">
+            <div class="main-container">
+                <div class="content">
+
+
+                    @if (User.IsInRole("admin"))
+                    {
+                        <div class="admin-panel">
+                            <h2>Администрирование</h2>
+                        </div>
+                    }
+
+                    else if (User.IsInRole("keeper"))
+                    {
+
+                        <div class="keeper-panel">
+                            <div class="keeper-links">
+                                <button class="btn-index" id="JournalOfTask" type="button" onclick="location.href='./JournalOfTask/Index'">Журнал ваших заданий</button>
+                                <button class="btn-index" id="Task" type="button" onclick="location.href='./Task/Index'">Задания</button>
+                                <button class="btn-index" id="Animal" type="button" onclick="location.href='./Animal/Index'">Животные</button>
+                                <button class="btn-index" id="SpeciesNote" type="button" onclick="location.href='./SpeciesNote/Index'">Виды животных</button>
+                                <button class="btn-index" id="Cage" type="button" onclick="location.href='./Cage/Index'">Вольеры</button>
+                                <div class="form-group">
+                                    <form id="manageForm" class="form-inline" asp-area="Identity" asp-page="/Account/Manage/Index" asp-route-returnUrl="@Url.Page("/Account/Manage/Index", new { area = "Identity" })">
+                                        <button class="btn-index" id="manage" title="Manage">Личный кабинет</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else if (User.IsInRole("veterinarian"))
+                    {
+                        
+                        <div class="veterinarian-panel">
+                            <div class="veterinarian-links">
+                                <button class="btn-index" id="JournalOfTask" type="button" onclick="location.href='./JournalOfTask/Index'">Журнал ваших заданий</button>
+                                <button class="btn-index" id="Task" type="button" onclick="location.href='./Task/Index'">Задания</button>
+                                <button class="btn-index" id="Vaccination" type="button" onclick="location.href='./Vaccination/Index'">Вакцинация</button>
+                                <button class="btn-index" id="Animal" type="button" onclick="location.href='./Animal/Index'">Животные</button>
+                                <button class="btn-index" id="SpeciesNote" type="button" onclick="location.href='./SpeciesNote/Index'">Виды животных</button>
+                                <button class="btn-index" id="Cage" type="button" onclick="location.href='./Cage/Index'">Вольеры</button>
+                                <div class="form-group">
+                                    <form id="manageForm" class="form-inline" asp-area="Identity" asp-page="/Account/Manage/Index" asp-route-returnUrl="@Url.Page("/Account/Manage/Index", new { area = "Identity" })">
+                                        <button class="btn-index" id="manage" title="Manage">Личный кабинет</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <script>window.location.href ="@Url.Page("/Account/Login", new { area = "Identity" })"</script>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

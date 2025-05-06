@@ -1,0 +1,52 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Авторизация";
+}
+
+<body class="body-background">
+    <div class="wrapper">
+        <div class="border-container-login">
+            <div class="row">
+                <div class="col-md-4" style="width:100%">
+                    <section>
+                        <form id="account" method="post">
+                            <h2 class="login-head">Авторизация</h2>
+                            <hr />
+                            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                                <label asp-for="Input.Email" class="form-label">Адрес эл. почты</label>
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                                <label asp-for="Input.Password" class="form-label">Пароль</label>
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                            <div class="checkbox mb-3">
+                                <label asp-for="Input.RememberMe" class="form-label">
+                                    <input class="form-check-input" asp-for="Input.RememberMe" />
+                                    Запомнить меня
+                                </label>
+                                <p class="forgot-register-p">
+                                    <a class="forgot-pass" id="forgot-password" asp-page="./ForgotPassword">Забыли пароль?</a>
+                                </p>
+                            </div>
+                            <div>
+                                <button id="login-submit" type="submit" class="btn btn-lg btn-login">Войти</button>
+                                <button class="btn-register" type="button" id="register" onclick="location.href='./Register'">Зарегистрироваться</button>
+
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

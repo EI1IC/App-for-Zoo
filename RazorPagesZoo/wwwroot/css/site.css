@@ -1,0 +1,263 @@
+html {
+    font-size: 16px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+a {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.h1 {
+    color: white;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-image: url('/RazorPagesZoo/RazorPagesZoo/wwwroot/background1.jpg'); /* Замените на путь к вашей картинке */
+    background-size: cover; /* Покрывает весь фон, обрезая изображение при необходимости */
+    background-repeat: no-repeat; /* Не повторяет изображение */
+    margin-bottom: 10px;
+}
+
+.body-background {
+    background-image: url('/background1.jpg'); /* Замените на путь к вашей картинке */
+    background-size: cover; /* Покрывает весь фон, обрезая изображение при необходимости */
+    background-repeat: no-repeat;
+    line-height: 15px;
+}
+
+.main-title {
+    text-align: center;
+    font-size: 36px;
+    margin: 25px;
+}
+
+.main.pb-3 .h1 {
+    color: white
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: normal; /* Центрирование по горизонтали */
+    align-items: baseline;
+    display: flex;
+}
+
+.row-manage {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: normal;
+    align-items: baseline;
+    padding: 10px;
+}
+
+.col-md-3 {
+    margin-right: 50px;
+    width: 100px;
+}
+
+.col-md-6 {
+    width: 100%;
+}
+
+.btn-login {
+    background-color: #2ac834;
+    color: white;
+    border: none;
+    width: 100%;
+    margin: 5px;
+    padding: 10px 10px;
+    border-radius: 5px;
+    border-radius: 40px;
+}
+
+.btn-index {
+    background-color: #2ac834;
+    color: white;
+    border: none;
+    width: 100%;
+    height: 45px;
+    margin: 5px;
+    padding: 10px 10px;
+    border-radius: 5px;
+    border-radius: 40px;
+}
+
+.btn-register {
+    background-color: #4c4c4c81;
+    color: white;
+    border: none;
+    width: 100%;
+    margin: 5px;
+    padding: 10px 10px;
+    border-radius: 5px;
+    border-radius: 40px;
+    font-size: 16px;
+}
+
+.btn-login:hover {
+    color: white;
+    background-color: #31a939; /* Цвет фона при наведении */
+}
+
+.btn-index:hover {
+    color: white;
+    background-color: #31a939; /* Цвет фона при наведении */
+}
+
+.btn-register:hover {
+    background-color: #32323281; /* Цвет фона при наведении */
+}
+
+.border-container-login {
+    display: flex;
+    flex-grow: initial;
+    justify-content: center;
+    border: 5px solid #283c17ff; /* Цвет и толщина рамки */
+    padding: 10px; /* Отступы внутри рамки */
+    background-color: #ffffffef; /* Цвет фона контейнера */
+    border-radius: 30px; /* Скругление углов (по желанию) */
+    width: 440px;
+}
+
+.border-container-manage {
+    display: flex;
+    flex-grow: initial;
+    justify-content: center;
+    border: 5px solid #283c17ff; /* Цвет и толщина рамки */
+    padding: 10px; /* Отступы внутри рамки */
+    background-color: #ffffffef; /* Цвет фона контейнера */
+    border-radius: 30px; /* Скругление углов (по желанию) */
+    width: 390px;
+}
+
+.wrapper {
+    display: flex;
+    align-content: center;
+    justify-content: center; /* Горизонтальное центрирование */
+    height: 450px; /* Высота обертки */
+}
+
+.wrapper-manage {
+    display: flex;
+    align-content: baseline;
+    justify-content: center; /* Горизонтальное центрирование */
+    height: 350px; /* Высота обертки */
+}
+
+.form-floating {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+    .form-floating label {
+        display: block; /* Делаем label блочным элементом */
+        margin-bottom: 5px; /* Отступ между label и input */
+    }
+
+    .form-floating input[type="email"],
+    .form-floating input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 40px;
+        box-sizing: border-box; /* Чтобы паддинги не влияли на ширину */
+    }
+
+.checkbox {
+    display: flex;
+    flex-direction: row;
+    gap: 121px;
+    white-space: nowrap;
+}
+
+.form-check-input:checked {
+    background-color: #2ac834;
+    border-color: #2ac834;
+}
+
+.login-head {
+    text-align: center;
+}
+
+.forgot-pass {
+    color: gray;
+}
+
+    .forgot-pass:after {
+        display: block;
+        left: 0;
+        bottom: -10px;
+        width: 0;
+        height: 2px;
+        background-color: #56baed;
+        content: "";
+        transition: width 0.2s;
+    }
+
+    .forgot-pass:hover {
+        color: black;
+    }
+
+        .forgot-pass:hover:after {
+            width: 100%;
+        }
+
+.table-column {
+    color: black;
+}
+
+.btn-success {
+    background-color: #2ac834;
+}
+
+.head-journal {
+    color: white;
+}
+
+.label-journal {
+    color: black;
+}
+
+.btn-journal-filter {
+    background-color: #2ac834;
+    color: white;
+}
+
+.form-control-journal {
+    width: 150px;
+    height: 35px;
+}
+
+.form-control-journal1 {
+    position: relative;
+    left: 73px;
+}
+
+.filter-box {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    background-color: #fffffff3;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}

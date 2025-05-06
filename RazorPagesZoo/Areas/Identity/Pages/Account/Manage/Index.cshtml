@@ -1,0 +1,36 @@
+﻿@page
+@model IndexModel
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+<partial name="_StatusMessage" for="StatusMessage" />
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Основная информация</h2>
+        @if (Model.Employee != null)
+        {
+            <div>
+                <p><strong>Номер:</strong> @Model.Employee.IdEmployee</p>
+                <p><strong>Имя:</strong> @Model.Employee.Name</p>
+                <p><strong>Фамилия:</strong> @Model.Employee.Surname </p>
+                <p><strong>Почта:</strong> @Model.Username</p>
+                <p><strong>Должность:</strong> @Model.Employee.Role </p>
+                <p><strong>Эффективность:</strong> @Model.Employee.WorkEfficiency </p>
+                <!-- Добавьте сюда другие поля из вашей модели Employee -->
+            </div>
+        }
+        else
+        {
+            <p>Информация не найдена</p>
+        }
+
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

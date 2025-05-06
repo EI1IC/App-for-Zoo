@@ -1,0 +1,87 @@
+﻿@page
+@model RazorPagesZoo.Pages.Task.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="h1">Задания</h1>
+
+<p style="color:white;">
+    <a asp-page="Create">Добавить</a>
+</p>
+
+<form method="post">
+    <div class="form-group">
+        <select asp-for="SelectedTaskId" asp-items="Model.AvailableTasks" class="form-control">
+            <option value="">Выберите задачу</option>  <!-- Добавлено для пустого значения -->
+        </select>
+        <span asp-validation-for="SelectedTaskId" class="text-danger"></span>  <!-- Добавлена валидация -->
+    </div>
+    <button type="submit" class="btn btn-primary">Взять задачу</button>
+</form>
+
+<p style="color:white;">Список всех задач:</p>
+@if (!ViewData.ModelState.IsValid){
+    <div class="alert alert-danger">
+        <button class="btn-index" id="JournalOfTask" type="button" onclick="location.href='/JournalOfTask/Index'">Обновить</button>
+    </div>
+}
+@if (ViewData.ModelState.IsValid)
+{
+<table class="table" style="border-radius:20px; background-color:#fffffff3;">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Task[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task[0].DateDrop)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task[0].Deadline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task[0].IdAnimalNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task[0].IdCageNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+ 
+    <tbody>
+        @foreach (var item in Model.Task)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateDrop)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Deadline)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdAnimalNavigation.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCageNavigation.IdCage)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.IdTask">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.IdTask">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.IdTask">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

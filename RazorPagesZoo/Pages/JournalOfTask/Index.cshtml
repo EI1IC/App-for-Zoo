@@ -1,0 +1,102 @@
+﻿@page
+@model RazorPagesZoo.Pages.JournalOfTask.IndexModel
+@{
+    ViewData["Title"] = "Журнал заданий";
+}
+
+<h1 class="h1 head-journal">Журнал заданий</h1>
+
+<body class="body-background">
+    <button id="filterButton">Показать фильтр</button>
+    <div class="filter-box" id="filterBox">
+        <!-- Содержимое окна фильтрации -->
+        <form class="form-journal" method="get">
+            <div class="form-group">
+                <label for="Status">Статус:</label>
+                <select class="form-control" id="Status" name="Status" asp-items="@Model.Status">
+                    <option value="">Все статусы</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="StartDateFrom">Дата начала (от):</label>
+                <input type="date" class="form-control" id="StartDateFrom" name="StartDateFrom" value="@Model.StartDateFrom?.ToString("yyyy-MM-dd")">
+            </div>
+            <div class="form-group">
+                <label for="StartDateTo">Дата начала (до):</label>
+                <input type="date" class="form-control" id="StartDateTo" name="StartDateTo" value="@Model.StartDateTo?.ToString("yyyy-MM-dd")">
+            </div>
+            <button type="submit" class="btn btn-journal-filter">Применить</button>
+        </form>
+    </div>
+    <form method="get">
+        <p>
+            <input type="text" asp-for="SearchString" id="SearchString" placeholder="Что ищем?" />
+            <input style="background-color:green;" type="submit" value="Поиск" />
+        </p>
+    </form>
+    <script>
+        const filterButton = document.getElementById('filterButton');
+        const filterBox = document.getElementById('filterBox');
+
+        filterButton.addEventListener('click', () => {
+          filterBox.style.display = filterBox.style.display === 'block' ? 'none' : 'block';
+        });
+    </script>
+
+    <table class="table" style="border-radius:20px; background-color:#fffffff3;">
+        <thead>
+            <tr>
+                <th class="table-column">
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.StartDateSort">Дата начала выполнения</a>
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.EndDateSort">Дата окончания выполнения</a>
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.IdTaskSort">Номер задания</a>
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.IdEmployeeSort">Номер работника</a>
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.StatusSort">Статус</a>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.JournalOfTask)
+            {
+                <tr>
+                    <td class="table-column">
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @(item.EndDate.HasValue ? item.EndDate.Value.ToShortDateString() : "")
+                    </td>
+                    <td>
+                        @(item.IdTaskNavigation != null ? item.IdTaskNavigation.IdTask : "N/A")
+                    </td>
+                    <td>
+                        @(item.IdEmployeeNavigation != null ? item.IdEmployeeNavigation.IdEmployee : "N/A")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @if (item.Status != "Выполнено")
+                        {
+                            <form method="post">
+                                <input type="hidden" name="IdEmployee" value="@item.IdEmployee" />
+                                <input type="hidden" name="idTask" value="@item.IdTask" />
+                                <button type="submit" asp-page-handler="Done" class="btn btn-success">Готово</button>
+                            </form>
+                        }
+                        @Html.ActionLink("Изменить", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Детали", "Details", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

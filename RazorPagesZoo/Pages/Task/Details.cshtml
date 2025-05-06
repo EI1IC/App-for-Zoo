@@ -1,0 +1,49 @@
+﻿@page
+@model RazorPagesZoo.Pages.Task.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Task</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Task.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Task.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Task.DateDrop)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Task.DateDrop)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Task.Deadline)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Task.Deadline)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Task.IdAnimalNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Task.IdAnimalNavigation.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Task.IdCageNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Task.IdCageNavigation.IdCage)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Task.IdTask">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

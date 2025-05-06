@@ -1,0 +1,66 @@
+﻿@page
+@model RazorPagesZoo.Pages.Animal.CreateModel
+
+@{
+    ViewData["Title"] = "Добавить животное";
+}
+
+<h1 class="h1">Добавить животное</h1>
+
+<h4 class="h1">Животное</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4" style="color:white;">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Animal.IdSpecies" class="control-label"></label>
+                <select asp-for="Animal.IdSpecies" class="form-control" asp-items="ViewBag.IdSpecies"></select>
+                <span asp-validation-for="Animal.IdSpecies" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Animal.Name" class="control-label"></label>
+                <input asp-for="Animal.Name" class="form-control" />
+                <span asp-validation-for="Animal.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Animal.Dob" class="control-label"></label>
+                <input asp-for="Animal.Dob" class="form-control" type="date" />
+                <span asp-validation-for="Animal.Dob" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Animal.Sex" class="control-label"></label>
+                <select asp-for="Animal.Sex" class="form-control">
+                    <option value="M">Мужской</option>
+                    <option value="F">Женский</option>
+                </select>
+                <span asp-validation-for="Animal.Sex" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Animal.Features" class="control-label"></label>
+                <input asp-for="Animal.Features" class="form-control" />
+                <span asp-validation-for="Animal.Features" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Animal.IdCage" class="control-label"></label>
+                <select asp-for="Animal.IdCage" class="form-control" asp-items="ViewBag.IdCage">
+                    <option value="">-- Выберите клетку --</option>
+                </select>
+                <span asp-validation-for="Animal.IdCage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Назад к списку</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

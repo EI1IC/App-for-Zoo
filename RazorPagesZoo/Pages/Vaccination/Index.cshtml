@@ -1,0 +1,82 @@
+﻿@page
+@model RazorPagesZoo.Pages.Vaccination.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h2 class="h1">Предстоящие вакцинации</h2>
+
+<table class="table" style="background-color:white; border-radius:20px;">
+    <thead>
+        <tr>
+            <th>Имя животного</th>
+            <th>Название вакцины</th>
+            <th>Дата следующей вакцинации</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.UpcomingVaccinations)
+        {
+            <tr>
+                <td>@item.AnimalName</td>
+                <td>@item.VaccinationName</td>
+                <td>@item.NextVaccinationDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<h1 class="h1">Вакцинации</h1>
+
+<p style="color:white;">
+    <a asp-page="Create">Добавить</a>
+</p>
+<table class="table" style="background-color:#fffffff3;border-radius:20px;">
+    <thead>
+        <tr>
+            <th>
+                Название
+            </th>
+            <th>
+                Партия
+            </th>
+            <th>
+                Дата последней вакцинации
+            </th>
+            <th>
+                Дата следующей вакцинации
+            </th>
+            <th>
+                Номер животного
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Vaccination) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameVaccination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdBatchLastVaccination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateLastVaccination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateNextVaccination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdAnimalNavigation.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IdVaccination">Изменить</a> |
+                <a asp-page="./Details" asp-route-id="@item.IdVaccination">Детали</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IdVaccination">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

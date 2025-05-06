@@ -1,0 +1,50 @@
+﻿@page
+@model RazorPagesZoo.Pages.SpeciesNote.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="h1">Изменить</h1>
+
+<h4 class="h1">Вид животного</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4" style="color:white;">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SpeciesNote.IdSpecies" />
+            <div class="form-group">
+                <label asp-for="SpeciesNote.Name" class="control-label">Название</label>
+                <input asp-for="SpeciesNote.Name" class="form-control" />
+                <span asp-validation-for="SpeciesNote.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpeciesNote.SpeciesGroup" class="control-label">Вид</label>
+                <input asp-for="SpeciesNote.SpeciesGroup" class="form-control" />
+                <span asp-validation-for="SpeciesNote.SpeciesGroup" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpeciesNote.Country" class="control-label">Страна</label>
+                <input asp-for="SpeciesNote.Country" class="form-control" />
+                <span asp-validation-for="SpeciesNote.Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpeciesNote.Image" class="control-label">Фото</label>
+                <input asp-for="SpeciesNote.Image" class="form-control" />
+                <span asp-validation-for="SpeciesNote.Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Назад к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,21 @@
+﻿@page
+@model RazorPagesZoo.Pages.SpeciesNote.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="h1">Детали</h1>
+
+<div>
+    <h4 class="h1">@Model.SpeciesNote.Name</h4>
+    <hr />
+
+    <div class="image-column">
+        <img src="@Model.SpeciesNote.Image" alt="@Model.SpeciesNote.Name" class="details-image" />
+    </div>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.SpeciesNote.IdSpecies">Изменить</a> |
+    <a asp-page="./Index">Назад к списку</a>
+</div>

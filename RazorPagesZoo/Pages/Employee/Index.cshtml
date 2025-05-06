@@ -1,0 +1,60 @@
+﻿@page
+@model RazorPagesZoo.Pages.Employee.IndexModel
+
+@{
+    ViewData["Title"] = "Работники";
+}
+
+<h1>Работники</h1>
+
+<p>
+    <a asp-page="Create">Добавить</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].Patronymic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].WorkEfficiency)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].IdentityUserId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Employee) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patronymic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkEfficiency)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdentityUserId)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IdEmployee">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.IdEmployee">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IdEmployee">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

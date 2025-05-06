@@ -1,0 +1,49 @@
+﻿@page
+@model RazorPagesZoo.Pages.JournalOfTask.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>JournalOfTask</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JournalOfTask.StartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JournalOfTask.StartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JournalOfTask.EndDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JournalOfTask.EndDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JournalOfTask.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JournalOfTask.Status)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JournalOfTask.IdEmployeeNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JournalOfTask.IdEmployeeNavigation.IdEmployee)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JournalOfTask.IdTaskNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JournalOfTask.IdTaskNavigation.IdTask)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-page="./Index">Back to List</a>
+</div>

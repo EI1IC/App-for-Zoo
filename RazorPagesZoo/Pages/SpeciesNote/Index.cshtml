@@ -1,0 +1,49 @@
+﻿@page
+@model RazorPagesZoo.Pages.SpeciesNote.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="h1">Виды животных</h1>
+
+<p>
+    <a asp-page="Create">Добавить</a>
+</p>
+<table class="table" style="border-radius:20px; background-color:#fffffff3;">
+    <thead>
+        <tr>
+            <th>
+                Название
+            </th>
+            <th>
+                Вид
+            </th>
+            <th>
+                Страна
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.SpeciesNote)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SpeciesGroup)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.IdSpecies">Изменить</a> |
+                    <a asp-page="./Details" asp-route-id="@item.IdSpecies">Детали</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.IdSpecies">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

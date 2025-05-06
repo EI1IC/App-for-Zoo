@@ -1,0 +1,55 @@
+﻿@page
+@model RazorPagesZoo.Pages.Cage.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="h1">Вольеры</h1>
+
+<p>
+    <a asp-page="Create">Добавить</a>
+</p>
+<table class="table" style="border-radius:20px; background-color:#fffffff3;">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cage[0].Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cage[0].CageSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cage[0].Temp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cage[0].Type)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Cage)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CageSize)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Temp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.IdCage">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.IdCage">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.IdCage">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
